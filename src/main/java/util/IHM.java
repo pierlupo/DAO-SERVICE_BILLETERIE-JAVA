@@ -178,9 +178,9 @@ public class IHM {
         scanner.nextLine();
         customerService = new CustomerService();
         if (customerService.deleteCustomer(id)) {
-            System.out.println("Le client a été supprimé avec succès");
+            System.out.println("Customer successfully deleted");
         } else {
-            System.out.println("Le client n'a pas été supprimé");
+            System.out.println("Error while deleting customer");
         }
     }
     // Crud Event
@@ -227,32 +227,33 @@ public class IHM {
 
     // 1 - Create event
     private void saveEventAction() {
-        System.out.println("Enter the name of the event");
+        System.out.println("Enter the name of the event :");
         String name = scanner.nextLine();
-        System.out.println("Enter the date of the event");
+        System.out.println("Enter the date of the event :");
         //String date = scanner.nextLine();
         Date date = Date.valueOf(scanner.nextLine());
-        System.out.println("Enter the date of the event");
-        String time = scanner.nextLine();
-        System.out.println("Enter the id of the place");
+        System.out.println("Enter the date of the event(yyyy-mm-dd) : ");
+        scanner.nextLine();
+        String hour = scanner.nextLine();
+        System.out.println("Enter the id of the place : ");
         int placeId = scanner.nextInt();
-        System.out.println("Enter the price of the event");
+        System.out.println("Enter the price of the event : ");
         int price = scanner.nextInt();
-        System.out.println("Enter the number of tickets sold");
+        System.out.println("Enter the number of tickets sold : ");
         int ticketsSold = scanner.nextInt();
         scanner.nextLine();
         EventService eventService = new EventService();
-        if (eventService.addEvent(name, date, time, placeId, price, ticketsSold)) {
-            System.out.println("L'evenement a été enregistré avec succès");
+        if (eventService.addEvent(name, date, hour, placeId, price, ticketsSold)) {
+            System.out.println("event successfully added");
         } else {
-            System.out.println("L'evenement n'a pas été enregistré");
+            System.out.println("error while adding the event");
         }
 
     }
 
     // 2 - List all events
     private void getAllEventAction() {
-        System.out.println("Liste des evenements :");
+        System.out.println("List of all events :");
         EventService eventService = new EventService();
         if (eventService.getAllEvent() != null) {
             eventService.getAllEvent().forEach(
@@ -267,7 +268,7 @@ public class IHM {
                     )
             );
         } else {
-            System.out.println("Il n'y a pas d'evenement enregistré");
+            System.out.println("No events");
         }
     }
 
@@ -293,7 +294,7 @@ public class IHM {
         if (eventService.updateEvent(id, name, date, hour, placeId, price, ticketsSold)) {
             System.out.println("Event successfully updated");
         } else {
-            System.out.println("L'evenement n'a pas été modifié");
+            System.out.println("Error while updating event");
         }
     }
 
@@ -332,7 +333,7 @@ public class IHM {
                 case "5":
                     break;
                 default:
-                    System.out.println("Choix non valide");
+                    System.out.println("Invalid choice");
             }
         } while (!choix.equals("5"));
     }
@@ -377,9 +378,9 @@ public class IHM {
         placeService.getAllPlaces().forEach(
                 place -> System.out.println(
                         "Id : " +  place.getId() +
-                                " Nom : " + place.getName() +
-                                " Adresse : " + place.getAddress() +
-                                " Capacité : " + place.getCapacity()
+                                " Name : " + place.getName() +
+                                " Address : " + place.getAddress() +
+                                " Capacity : " + place.getCapacity()
                 )
         );
     }
@@ -444,9 +445,9 @@ public class IHM {
         scanner.nextLine();
         TicketsSalesService ticketssalesService = new TicketsSalesService();
         if (ticketssalesService.deleteTicketsSale(id)) {
-            System.out.println("Le ticket a été supprimé avec succès");
+            System.out.println("Ticket was successfully cancelled");
         } else {
-            System.out.println("Le ticket n'a pas été supprimé");
+            System.out.println("Error while cancelling the ticket");
         }
     }
 
@@ -505,7 +506,7 @@ public class IHM {
                     )
             );
         } else {
-            System.out.println("Il n'y a pas de ticket enregistré");
+            System.out.println("No tickets");
         }
     }
 //    private Customer addCustomerAction() {
