@@ -229,11 +229,9 @@ public class IHM {
     private void saveEventAction() {
         System.out.println("Enter the name of the event :");
         String name = scanner.nextLine();
-        System.out.println("Enter the date of the event :");
-        //String date = scanner.nextLine();
-        Date date = Date.valueOf(scanner.nextLine());
         System.out.println("Enter the date of the event(yyyy-mm-dd) : ");
-        scanner.nextLine();
+        Date date = Date.valueOf(scanner.nextLine());
+        System.out.println("Enter the hour at which the event starts : ");
         String hour = scanner.nextLine();
         System.out.println("Enter the id of the place : ");
         int placeId = scanner.nextInt();

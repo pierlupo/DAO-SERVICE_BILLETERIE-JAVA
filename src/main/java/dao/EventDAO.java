@@ -16,7 +16,7 @@ public class EventDAO extends BaseDAO<Event>{
 
     @Override
     public boolean save(Event event) throws ExecutionControl.NotImplementedException, SQLException {
-        request = "INSERT INTO event (name, date, hour, placeId, price, tickets_sold) values (?,?,?,?,?,?)";
+        request = "INSERT INTO event (name, date, hour, place_Id, price, tickets_sold) values (?,?,?,?,?,?)";
         statement = _connection.prepareStatement(request, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1, event.getName());
         statement.setDate(2, (Date) event.getDate());
@@ -42,7 +42,7 @@ public class EventDAO extends BaseDAO<Event>{
                     resultSet.getString("name"),
                     resultSet.getDate("date"),
                     resultSet.getString("hour"),
-                    resultSet.getInt("placeId"),
+                    resultSet.getInt("place_Id"),
                     resultSet.getDouble("price"),
                     resultSet.getInt("tickets_sold"));
         }
@@ -60,7 +60,7 @@ public class EventDAO extends BaseDAO<Event>{
                     resultSet.getString("name"),
                     resultSet.getDate("date"),
                     resultSet.getString("hour"),
-                    resultSet.getInt("placeId"),
+                    resultSet.getInt("place_Id"),
                     resultSet.getDouble("price"),
                     resultSet.getInt("tickets_sold"));
             result.add(event);
